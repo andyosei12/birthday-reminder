@@ -1,4 +1,5 @@
 const User = require('./models/user');
+const sendMail = require('./mail');
 
 const birthdayReminder = async () => {
   // get current date
@@ -17,6 +18,7 @@ const birthdayReminder = async () => {
     if (users.length > 0) {
       users.forEach((user) => {
         console.log(`Today is ${user.user_name}'s birthday!`);
+        sendMail();
       });
     } else {
       console.log('No birthdays today');
