@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 db.connect();
 
 // schedule.scheduleJob('* * * * *', birthdayReminder);
-schedule.scheduleJob('0 7 * * *', birthdayReminder);
+schedule.scheduleJob('* * * * *', birthdayReminder);
 
 // handling routes here
 app.get('/', (req, res) => {
