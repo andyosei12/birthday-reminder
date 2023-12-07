@@ -13,14 +13,19 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendMail = async () => {
+const sendMail = async ({ email, name }) => {
+  console.log(email, name);
   try {
     const info = await transporter.sendMail({
-      from: '"Nana Kwesi" <nanaosei2089@gmail.com>', // sender address
-      to: 'christianaketor0@gmail.com', // receiver address
+      from: '"Drew Inc" <nanaosei2089@gmail.com>', // sender address
+      to: email, // receiver address
       subject: 'We celebrate you on your birthday', // Subject line
-      text: 'Wishing you a happy birthday', // plain text body
-      html: '<b>Wishing you a happy birthday</b>', // html body
+      // plain text body
+      html: `
+      <h3>Hi ${name}, wishing you a happy birthday<h3/>
+      <p>From the management of Drew Inc. we hope you have a special day. Lunch is on us today.</p>
+      <p>Cheers 🥂🥳🎉</p>
+      `, // html body
     });
 
     console.log('Message sent: %s', info.messageId);
