@@ -124,7 +124,7 @@
       submitButton.disabled = true;
       inputFields.forEach((input) => (input.disabled = true));
 
-      fetch('http://localhost:3000/api/v1/user', {
+      fetch('https://kaeme.onrender.com/api/v1/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
