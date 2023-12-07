@@ -18,14 +18,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 db.connect();
 
-schedule.scheduleJob('* * * * *', birthdayReminder);
+schedule.scheduleJob('0 7 * * *', birthdayReminder);
 
 // handling routes here
 app.get('/', (req, res) => {
-  res.send('hello world');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.post('/', validateUserInput, addUser);
+app.post('/api/v1/user', validateUserInput, addUser);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

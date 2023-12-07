@@ -8,7 +8,6 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    // TODO: replace `user` and `pass` values from <https://forwardemail.net>
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD,
   },
@@ -18,7 +17,7 @@ const sendMail = async () => {
   try {
     const info = await transporter.sendMail({
       from: '"Nana Kwesi" <nanaosei2089@gmail.com>', // sender address
-      to: 'andrew.oseiowusu@gmail.com', // list of receivers
+      to: 'christianaketor0@gmail.com', // receiver address
       subject: 'We celebrate you on your birthday', // Subject line
       text: 'Wishing you a happy birthday', // plain text body
       html: '<b>Wishing you a happy birthday</b>', // html body

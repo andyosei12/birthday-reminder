@@ -7,7 +7,7 @@ module.exports = addUser = async (req, res) => {
     if (existingUser) {
       return res.status(409).json({
         error: true,
-        message: 'User already exists',
+        message: 'User details already exists',
       });
     }
     const user = await User.create({
