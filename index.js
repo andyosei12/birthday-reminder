@@ -19,7 +19,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 db.connect();
 
 // schedule.scheduleJob('* * * * *', birthdayReminder);
-schedule.scheduleJob('0 7 * * *', birthdayReminder);
+const rule = new schedule.RecurrenceRule();
+rule.hour = 8;
+rule.minute = 10;
+rule.tz = 'Etc/UTC';
+schedule.scheduleJob(rule, birthdayReminder);
 
 // handling routes here
 app.get('/', (req, res) => {
