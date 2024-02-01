@@ -20,8 +20,8 @@ db.connect();
 
 // schedule.scheduleJob('* * * * *', birthdayReminder);
 const rule = new schedule.RecurrenceRule();
-rule.hour = 11;
-rule.minute = 58;
+rule.hour = 7;
+rule.minute = 0;
 rule.tz = 'Etc/UTC';
 schedule.scheduleJob(rule, birthdayReminder);
 
