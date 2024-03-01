@@ -12,7 +12,7 @@ const birthdayReminder = async () => {
         $match: {
           $expr: {
             $and: {
-              $eq: [{ $month: '$date_of_birth' }, currentDate.getMonth() + 1],
+              $eq: [{ $month: '$date_of_birth' }, currentDate.getMonth()],
               $eq: [{ $dayOfMonth: '$date_of_birth' }, currentDate.getDate()],
             },
           },
