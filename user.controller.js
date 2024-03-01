@@ -15,7 +15,7 @@ module.exports = addUser = async (req, res) => {
       email,
       date_of_birth,
     });
-    res.status(201).json({ message: 'User details added', user });
+    res.status(201).json({ message: 'Your details have been recorded', user });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
