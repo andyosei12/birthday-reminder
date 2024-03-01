@@ -7,21 +7,17 @@ const birthdayReminder = async () => {
   // find all users whose birthday is today
   try {
     // find a user whose date of birth is equal to the current month and current day
-    const users = await User.aggregate([
-      {
-        $match: {
-          $expr: {
-            $and: {
-              $eq: [{ $month: '$date_of_birth' }, currentDate.getMonth()],
-              $eq: [{ $dayOfMonth: '$date_of_birth' }, currentDate.getDate()],
-            },
-          },
-        },
+    const users = await User.find({
+      $expr: {
+        $and: [
+          { $eq: [{ $month: '$date_of_birth' }, currentDate.getMonth() + 1] },
+          { $eq: [{ $dayOfMonth: '$date_of_birth' }, currentDate.getDate()] },
+        ],
       },
-    ]);
+    });
+
     if (users.length > 0) {
       users.forEach((user) => {
-        console.log(`Today is ${user.user_name}'s birthday!`);
         sendMail({ email: user.email, name: user.user_name });
       });
     } else {
